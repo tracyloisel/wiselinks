@@ -2,8 +2,8 @@ class Link
   constructor: (@page, @$link) ->
 
   allows_process: (event) ->
-    !(this._cross_origin_link(event.currentTarget) ||
-      this._non_standard_click(event))
+    (@$link.data('wiselink') != 'outofwiselink' && !(this._cross_origin_link(event.currentTarget) ||
+      this._non_standard_click(event)))
 
   process: ->
     type = if (@$link.data('push') == 'partial')
